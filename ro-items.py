@@ -12,7 +12,7 @@ url = 'https://rd.fharr.com/item-' + id + '.html'
 
 # sequences = [0, 1, 2, 3, 4, 5]
 # sequences = range(0, 1)
-sequences = [1, 13417]
+sequences = [1, 13417, 585]
 for i in sequences:
   id = str(i)
   url = 'https://rd.fharr.com/item-' + id + '.html'
@@ -31,6 +31,7 @@ for i in sequences:
   item_name = result[0].text.replace('臺灣', '').strip();
 
   json_object = {
+    'id': id,
     'name': item_name
     }
   print('============');
@@ -38,8 +39,8 @@ for i in sequences:
   # print(result[1]);
   # print('============');
   print(result[2].find_all('p'));
-  for idx, name in enumerate(result[2].find_all('p')):
-    print(name)
+  for idx, element in enumerate(result[2].find_all('p')):
+    print(element)
   # print(result, len(result));
 
   print(json_object);
