@@ -3,6 +3,10 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
+# f = open('items.json', 'a')
+f = open('outputs/items.json', 'w')
+item_list = list()
+# f.write('[')
 # 
 # id = str(13417)
 id = str(13417)
@@ -11,7 +15,7 @@ url = 'https://rd.fharr.com/item-' + id + '.html'
 # print(url)
 
 # sequences = [0, 1, 2, 3, 4, 5]
-# sequences = range(0, 1)
+# sequences = range(500, 1000)
 sequences = [1, 13417, 585]
 for i in sequences:
   id = str(i)
@@ -38,9 +42,22 @@ for i in sequences:
   # 圖片
   # print(result[1]);
   # print('============');
-  print(result[2].find_all('p'));
-  for idx, element in enumerate(result[2].find_all('p')):
-    print(element)
+  
+  # 介紹 
+  # print(result[2].find_all('p'));
+  # for idx, element in enumerate(result[2].find_all('p')):
+    # print(element)
   # print(result, len(result));
 
   print(json_object);
+  ##### write file sample
+  # 
+  # f.write(json.dumps(json_object))
+  item_list.append(json_object);
+  # 
+
+# f.write(']')
+f.write(json.dumps(item_list))
+f.close() 
+
+# SQL UPDATE `table` SET 'name' = 'xxx' WHERE id = 'xxx';
